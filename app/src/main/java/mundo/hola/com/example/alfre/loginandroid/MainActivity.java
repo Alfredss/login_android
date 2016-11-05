@@ -1,6 +1,7 @@
 package mundo.hola.com.example.alfre.loginandroid;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,11 +12,18 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import OpenHelper.SQLite_OpenHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button btnIngresar;
     TextView txtRegistrese;
+    EditText edtUsuario;
+    EditText edtPassword;
+    SQLite_OpenHelper helper = new SQLite_OpenHelper(this, "BD1", null, 1);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setAction("Action", null).show();
             }
         });
+
+        edtUsuario = (EditText) findViewById(R.id.edtUsuario);
+        edtPassword = (EditText) findViewById(R.id.edtPassword);
 
         btnIngresar = (Button) findViewById(R.id.btnIngresar);
         btnIngresar.setOnClickListener(this);
@@ -73,7 +84,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnIngresar:
+                try {
+                    Cursor a = helper.consultarUsuPas(String.valueOf(edtUsuario.getText()), String.valueOf(edtPassword.getText()));
+                    if(a.getCount() > 0){
+                        Intent intent = new Intent(this, Principal.class);
+                        startActivity(intent);
+                        Toast.makeText(MainActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(MainActivity.this, "Usted no esta Registrado", Toast.LENGTH_SHORT).show();
+                    }
 
+                }catch (Exception e){
+
+                }
+
+                break;
             default:
                 break;
         }
