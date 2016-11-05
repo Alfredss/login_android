@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button btnIngresar;
+    TextView txtRegistrese;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnIngresar = (Button) findViewById(R.id.btnIngresar);
         btnIngresar.setOnClickListener(this);
+
+        txtRegistrese = (TextView) findViewById(R.id.txtRegistrese);
     }
 
     @Override
@@ -59,9 +63,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnIngresar:
-                Intent intent = new Intent(this, Registro.class);
-                startActivity(intent);
-                break;
+
+            case R.id.txtRegistrese:
+                Intent intent1 = new Intent(this, Registro.class);
+                startActivity(intent1);
             default:
                 break;
         }

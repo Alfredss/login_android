@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/edtRUsuario"
         android:hint="Nombre de Usuario"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,13 +41,15 @@
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:id="@+id/edtRPassword"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Repetir Contraseña"
         android:inputType="textPassword"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:id="@+id/edtRPasswordR"/>
 
     <Button
         android:layout_width="match_parent"
