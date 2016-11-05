@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnIngresar.setOnClickListener(this);
 
         txtRegistrese = (TextView) findViewById(R.id.txtRegistrese);
+        txtRegistrese.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                Intent intent1 = new Intent(getApplicationContext(), Registro.class);
+                startActivity(intent1);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -64,9 +74,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.btnIngresar:
 
-            case R.id.txtRegistrese:
-                Intent intent1 = new Intent(this, Registro.class);
-                startActivity(intent1);
             default:
                 break;
         }

@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/edtREmail"
         android:hint="Email"
-        android:inputType="textEmailSubject"
         android:layout_marginTop="20dp"/>
 
     <EditText

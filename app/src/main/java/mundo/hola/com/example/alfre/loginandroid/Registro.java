@@ -49,10 +49,12 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         helper.getWritableDatabase();
+
         helper.insertReg(String.valueOf(edtUsuario.getText()),
                 String.valueOf(edtEmail.getText()),
                 String.valueOf(edtPassword.getText()),
                 String.valueOf(edtRPassword.getText()));
+
         helper.close();
         Toast.makeText(Registro.this, "Usuario almacenado con Exito", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);

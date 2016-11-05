@@ -17,11 +17,7 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "create table usuarios(" +
-                "_ID integer primery key autoincrement," +
-                "Usuario text," +
-                "Email text," +
-                "Password text);";
+        String query = "create table usuarios(_ID integer primary key autoincrement, Usuario text, Email text, Password text);";
         db.execSQL(query);
     }
 
@@ -41,20 +37,13 @@ public class SQLite_OpenHelper extends SQLiteOpenHelper{
 
     public void insertReg(String usuario, String email, String pass, String rPass){
 
-        try {
-            if (pass.equals(rPass)){
-                ContentValues valores = new ContentValues();
-                valores.put("Usuario", usuario);
-                valores.put("Email", email);
-                valores.put("Password", pass);
-                this.getWritableDatabase().insert("usuarios", null, valores);
 
-
-            }
-
-
-        }catch (Exception e){
-
+        if (pass.equals(rPass)) {
+            ContentValues valores = new ContentValues();
+            valores.put("Usuario", usuario);
+            valores.put("Email", email);
+            valores.put("Password", pass);
+            this.getWritableDatabase().insert("usuarios", null, valores);
         }
 
     }
